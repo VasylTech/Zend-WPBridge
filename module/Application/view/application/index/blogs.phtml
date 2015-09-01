@@ -1,0 +1,23 @@
+<section>
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <h1 class="page-header">Blog</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-md-offset-2">
+            <div class="blog-item-container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <?php foreach ($this->wp->getPostList() as $blog) { ?>
+                            <h3 class="blog-title"><a href="<?php echo $this->wp->getPostPermalink($blog); ?>" class="btn-link"><?php echo $blog->post_title; ?></a> <small class="blog-date"><?php echo date('M dS, y', strtotime($blog->post_date)); ?></small></h3>
+                            <p><?php echo $blog->post_excerpt; ?> <a href="<?php echo $this->wp->getPostPermalink($blog); ?>" class="btn-link">read more</a></p>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>

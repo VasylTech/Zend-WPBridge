@@ -1,0 +1,15 @@
+<ul class="<?php echo $this->navigation($this->container)->menu()->getUlClass(); ?>">
+    <?php
+    foreach ($this->container as $page) {
+        if ($this->navigation()->accept($page)) {
+            $active = ($page->isActive(true) ? ' class="active-menu"' : '');
+            ?>
+            <li<?php echo ($active ? ' class="active"' : ''); ?>>
+                <a href="<?php echo $page->getHref(); ?>"><?php echo $this->escapeHtml($page->getLabel()); ?></a>
+                <?php echo ($active ? '<span class="menu-underline"></span>' : ''); ?>
+            </li>
+            <?php
+        }
+    }
+    ?>
+</ul>

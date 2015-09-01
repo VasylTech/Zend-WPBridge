@@ -1,0 +1,53 @@
+<?php echo $this->doctype(); ?>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?php
+        echo $this->headMeta()
+                ->appendName('viewport', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+                ->appendHttpEquiv('X-UA-Compatible', 'IE=edge');
+
+        echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+                ->prependStylesheet($this->basePath('css/theme.css'))
+                ->prependStylesheet($this->basePath('css/bootstrap.min.css'));
+
+        echo $this->headScript()->setFile($this->basePath('js/respond.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+                ->appendFile($this->basePath('js/html5shiv.min.js'), 'text/javascript', array('conditional' => 'lt IE 9',));
+        ?>
+    </head>
+    <body>
+        <nav class="navbar" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                        <span class="icon-menu"></span>
+                    </button>
+                    <a class="navbar-brand" href="<?php echo $this->url('home') ?>"><i class="icon-connectdevelop"></i> Zend WP Bridge</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <?php
+                    echo $this->navigation('navigation')
+                            ->menu()
+                            ->setUlClass('nav navbar-nav')
+                            ->setPartial('partial/menu/navigation.phtml');
+                    ?>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container page-container">
+            <?php echo $this->content; ?>
+        </div>
+
+        <span class="scroll-up"></span>
+
+        <?php
+        echo $this->inlineScript()
+                ->appendFile($this->basePath('js/jquery.min.js'))
+                ->appendFile($this->basePath('js/bootstrap.min.js'))
+                ->appendFile($this->basePath('js/jquery.scrollup.min.js'))
+                ->appendFile($this->basePath('js/frontend.js'))
+        ;
+        ?>
+    </body>
+</html>
